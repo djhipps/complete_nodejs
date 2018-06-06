@@ -1,0 +1,93 @@
+NODEJS - Udemy
+**************
+
+Resources
+==========
+https://www.wolfe.id.au/2014/02/01/getting-a-new-node-project-started-with-npm/
+
+
+Node Basics
+===========
+JavaScript runtime that uses the ChromeV8 (C++) (open source JS Engine that compiles to Machine code).
+> node // V8 console equivalent to JS console in Chrome dev tools
+>> global; //this is the global object equivalent to window in browser
+>> process; // this is comparable to the document object in the browser.
+
+Def. I/O - input/output - Computers are based on the fundamental idea that every input results in an output. For example, if you are running a word processor program and type a sentence on your keyboard, the text will appear on the screen. Reading or writing to a database, the communication from node application to other things inside the internet of things, http requests etc.
+
+Def. Non-Blocking - while one user is requesting a url from x other users can be requesting database, other requests etc, without blocking other users.
+
+
+Getting Started
+==============
+
+Basics
+------
+EX: node app.js to run your app.
+EX: nodemon app.js to run app with Nodemon watcher when developing.
+
+Node Require
+------------
+Looks for core modules, then nodemodules.
+
+Load in 3rd party libraries, or your own modules.
+Use Nodejs apis https://nodejs.org/api/ to see list of apis and their methods that we can use in our apps.
+EX: const fs = require('fs'); // we now have access to all
+
+Module Export property
+---------------------
+Inside all files that are required by are app there is a special variable available called 'moduule'.
+c.log(module);
+The export property is very useful. Use module.export to export object functions to export functions to your main app.js
+Use an objects on module.export to export vars and functions wholesale. Use the abbr object syntax (see misc).
+
+
+Arrow functions
+---------------
+Remove the function (anonymous function) dec and put an => operator between the parenths and braces
+() => {}
+AFs allow you to reomve the {} if there is only one statement, e.g. return statement.
+EX:  var duplicateNotes = notes.filter((note) => note.title === title);
+
+
+NPM and utility packages
+------------------------
+Use npm init - creates a project with package.json file.
+
+Nodemon package is a command line package that autorestarts the app when we make a file change.
+Globally install the Nodemon Package from npmjs.com to enable app autorestart.
+
+Lodash is a modern ultity library, it was recommend in the other course.
+Use the search to find useful methods.
+
+User Input
+----------
+To output user input from commandline by defaul in node use the process object.
+process.argv - is an array of all the arguments passed to the application via the node command, e.g. node app.js list
+These will contain your user input, e.g. [2] = your command, [3] = parameters
+
+
+Instead of using the default on the command line, use Yargs to give a more familiar commandline experience.
+require('yags') and then use yargs.argv instead of process.argv
+
+Storing data
+------------
+Use JSON.stringify(obj) to convert the obj to JSON.
+Use JSON.parse(str) to convert the json str to and obj.
+Use the fs core package to write/read the data.
+EX: fs.readFileSync('notes-data.json')
+EX: fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+
+
+
+Debugging node:
+---------------
+debugger; // provides a break point
+node(mon) inspect file.js yargs // run debugging mode on file, use n to step, c to play
+repl (in debug mode) to open commandline console to inspect variables
+nodemon —inspect-brk file.js // open chrome dev tools using chrome://inspect in the browser bar and then click on 'Open dedicated DevTools for Node'.
+
+Misc
+----
+In ES6 you can leave off the colon for identical key value pairs in objects
+{addNote:addNote}  === {addNote} //true
