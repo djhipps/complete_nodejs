@@ -17,14 +17,11 @@ Def. I/O - input/output - Computers are based on the fundamental idea that every
 
 Def. Non-Blocking - while one user is requesting a url from x other users can be requesting database, other requests etc, without blocking other users.
 
-
-Getting Started
-==============
-
-Basics
-------
+Basics commandline
+------------------
 EX: node app.js to run your app.
 EX: nodemon app.js to run app with Nodemon watcher when developing.
+EX: node inspect playground/debugging.js
 
 Node Require
 ------------
@@ -48,7 +45,11 @@ Remove the function (anonymous function) dec and put an => operator between the 
 () => {}
 AFs allow you to reomve the {} if there is only one statement, e.g. return statement.
 EX:  var duplicateNotes = notes.filter((note) => note.title === title);
-
+If there is only one paramter you can remove the parenthesis.
+Arrow functions do not bind a this keyword function unlike normal functions.
+this used inside the function will now refer to the global object.
+For a short cut for defining functions in the normal way on object literals in ES6 use fname () {} syntax.
+Arguments cannot be accessed in arrow functions either.
 
 NPM and utility packages
 ------------------------
@@ -80,12 +81,33 @@ EX: fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 
 
 
-Debugging node:
----------------
-debugger; // provides a break point
-node(mon) inspect file.js yargs // run debugging mode on file, use n to step, c to play
-repl (in debug mode) to open commandline console to inspect variables
-nodemon —inspect-brk file.js // open chrome dev tools using chrome://inspect in the browser bar and then click on 'Open dedicated DevTools for Node'.
+Debugging from command line:
+----------------------------
+Needs to be node v8 or greater.
+Run the debugging mode in the command line using the inspect mode...
+node inspect playground/debugging.js
+This will break on first line by default and provide a special node debugging interface. Basic commands can be used:
+
+debug>list(10)  // show the next 10 lines of code.
+debug>n         //move on to next statement, line by line
+debug>c         //moves to the end of program
+debug>ctrl+C twice //exits debug mode
+debug>repl      //repl mnode per
+
+debugger; // to get to any point you want to by using 'c', break point
+Then user repl to inspect / update variables etc
+node(mon) inspect allows you to update the file and it automatically re-runs the debugger.
+
+
+
+Debuggin in Chrome
+------------------
+node(mon) —inspect-brk file.js // open chrome dev tools using chrome://inspect in the browser bar and then click on 'Open dedicated DevTools for Node'.
+This out the following:
+Debugger listening on ws://127.0.0.1:9229/4e3f4d22-2d21-46dc-bde7-a8e958bffb99
+
+Open up Chrome, go to chrome://inspect and click on "Open dedicated DevTools for Node".
+
 
 Misc
 ----

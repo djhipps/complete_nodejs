@@ -4,8 +4,6 @@ var person = {
 
 person.age = 26;
 
-debugger;
-
-person.name = 'Mikey';
+person.name = 'Mike';
 
 console.log(person);

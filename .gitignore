@@ -1,5 +1,5 @@
 #project files ignored
-*.json
+notes-data.json
 
 # Logs
 logs
