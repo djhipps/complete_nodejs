@@ -19,6 +19,7 @@ Def. Non-Blocking - while one user is requesting a url from x other users can be
 
 Basics commandline
 ------------------
+> node // opens a node console, use to test node env and language
 EX: node app.js to run your app.
 EX: nodemon app.js to run app with Nodemon watcher when developing.
 EX: node inspect playground/debugging.js
@@ -108,6 +109,17 @@ Debugger listening on ws://127.0.0.1:9229/4e3f4d22-2d21-46dc-bde7-a8e958bffb99
 
 Open up Chrome, go to chrome://inspect and click on "Open dedicated DevTools for Node".
 
+Asynchronous code
+-----------------
+Callbacks that are run Asynchronously are added to the NodeAPIs tasklist and then the Callback Queue.
+The callback queue waits until the Call Stack is empty before it is moved over.
+
+Use the npm require package as a basic tool for async code.
+Some web apis may require a key.
+Use JSON.stringify() with paramters to prettify response.
+
+You may want to use
+encodeURIComponent / decodeURIComponent
 
 Misc
 ----
