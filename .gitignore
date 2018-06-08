@@ -1,5 +1,6 @@
 #project files ignored
 notes-data.json
+*package-lock.json
 
 # Logs
 logs

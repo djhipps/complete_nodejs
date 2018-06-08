@@ -1,5 +1,7 @@
 const yargs = require('yargs');
 
+//api key 80906f88b643471b26604dfc07937067 forecast.io
+
 const geocode = require('./geocode/geocode.js');
 
 const argv = yargs
