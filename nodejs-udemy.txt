@@ -121,6 +121,17 @@ Use JSON.stringify() with paramters to prettify response.
 You may want to use
 encodeURIComponent / decodeURIComponent
 
+Use the core promise function to avoid writing multiple callbacks and to group writing of succes and error handling functions.
+
+Pattern: new Promise wrapper.
+var function = (parms) => {return new Promise (mainfunction(resolve, reject){ ....resolve... reject } )}
+function(params).then(two arrow functions handling async returns)
+
+Use the then() function to chain multiple promises.
+Use catch() to handle first error encountered in chain of promises.
+
+Use axios npm to create a really simple sequence of promises. Chain don't nest!
+
 Misc
 ----
 In ES6 you can leave off the colon for identical key value pairs in objects
