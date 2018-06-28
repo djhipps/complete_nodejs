@@ -1,0 +1,127 @@
+NODEJS - Udemy
+**************
+
+Resources
+==========
+https://www.wolfe.id.au/2014/02/01/getting-a-new-node-project-started-with-npm/
+
+
+Node Basics
+===========
+JavaScript runtime that uses the ChromeV8 (C++) (open source JS Engine that compiles to Machine code).
+> node // V8 console equivalent to JS console in Chrome dev tools
+>> global; //this is the global object equivalent to window in browser
+>> process; // this is comparable to the document object in the browser.
+
+Def. I/O - input/output - Computers are based on the fundamental idea that every input results in an output. For example, if you are running a word processor program and type a sentence on your keyboard, the text will appear on the screen. Reading or writing to a database, the communication from node application to other things inside the internet of things, http requests etc.
+
+Def. Non-Blocking - while one user is requesting a url from x other users can be requesting database, other requests etc, without blocking other users.
+
+Basics commandline
+------------------
+> node // opens a node console, use to test node env and language
+EX: node app.js to run your app.
+EX: nodemon app.js to run app with Nodemon watcher when developing.
+EX: node inspect playground/debugging.js
+
+Node Require
+------------
+Looks for core modules, then nodemodules.
+
+Load in 3rd party libraries, or your own modules.
+Use Nodejs apis https://nodejs.org/api/ to see list of apis and their methods that we can use in our apps.
+EX: const fs = require('fs'); // we now have access to all
+
+Module Export property
+---------------------
+Inside all files that are required by are app there is a special variable available called 'moduule'.
+c.log(module);
+The export property is very useful. Use module.export to export object functions to export functions to your main app.js
+Use an objects on module.export to export vars and functions wholesale. Use the abbr object syntax (see misc).
+
+
+Arrow functions
+---------------
+Remove the function (anonymous function) dec and put an => operator between the parenths and braces
+() => {}
+AFs allow you to reomve the {} if there is only one statement, e.g. return statement.
+EX:  var duplicateNotes = notes.filter((note) => note.title === title);
+If there is only one paramter you can remove the parenthesis.
+Arrow functions do not bind a this keyword function unlike normal functions.
+this used inside the function will now refer to the global object.
+For a short cut for defining functions in the normal way on object literals in ES6 use fname () {} syntax.
+Arguments cannot be accessed in arrow functions either.
+
+NPM and utility packages
+------------------------
+Use npm init - creates a project with package.json file.
+
+Nodemon package is a command line package that autorestarts the app when we make a file change.
+Globally install the Nodemon Package from npmjs.com to enable app autorestart.
+
+Lodash is a modern ultity library, it was recommend in the other course.
+Use the search to find useful methods.
+
+User Input
+----------
+To output user input from commandline by defaul in node use the process object.
+process.argv - is an array of all the arguments passed to the application via the node command, e.g. node app.js list
+These will contain your user input, e.g. [2] = your command, [3] = parameters
+
+
+Instead of using the default on the command line, use Yargs to give a more familiar commandline experience.
+require('yags') and then use yargs.argv instead of process.argv
+
+Storing data
+------------
+Use JSON.stringify(obj) to convert the obj to JSON.
+Use JSON.parse(str) to convert the json str to and obj.
+Use the fs core package to write/read the data.
+EX: fs.readFileSync('notes-data.json')
+EX: fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+
+
+
+Debugging from command line:
+----------------------------
+Needs to be node v8 or greater.
+Run the debugging mode in the command line using the inspect mode...
+node inspect playground/debugging.js
+This will break on first line by default and provide a special node debugging interface. Basic commands can be used:
+
+debug>list(10)  // show the next 10 lines of code.
+debug>n         //move on to next statement, line by line
+debug>c         //moves to the end of program
+debug>ctrl+C twice //exits debug mode
+debug>repl      //repl mnode per
+
+debugger; // to get to any point you want to by using 'c', break point
+Then user repl to inspect / update variables etc
+node(mon) inspect allows you to update the file and it automatically re-runs the debugger.
+
+
+
+Debuggin in Chrome
+------------------
+node(mon) —inspect-brk file.js // open chrome dev tools using chrome://inspect in the browser bar and then click on 'Open dedicated DevTools for Node'.
+This out the following:
+Debugger listening on ws://127.0.0.1:9229/4e3f4d22-2d21-46dc-bde7-a8e958bffb99
+
+Open up Chrome, go to chrome://inspect and click on "Open dedicated DevTools for Node".
+
+Asynchronous code
+-----------------
+Callbacks that are run Asynchronously are added to the NodeAPIs tasklist and then the Callback Queue.
+The callback queue waits until the Call Stack is empty before it is moved over.
+
+Use the npm require package as a basic tool for async code.
+Some web apis may require a key.
+Use JSON.stringify() with paramters to prettify response.
+
+You may want to use
+encodeURIComponent / decodeURIComponent
+
+Misc
+----
+In ES6 you can leave off the colon for identical key value pairs in objects
+{addNote:addNote}  === {addNote} //true
