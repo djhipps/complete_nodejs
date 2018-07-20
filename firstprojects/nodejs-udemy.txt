@@ -125,3 +125,36 @@ Misc
 ----
 In ES6 you can leave off the colon for identical key value pairs in objects
 {addNote:addNote}  === {addNote} //true
+
+Setting up web servers
+=======================
+use express to set up a server. Use the express object to get set up a four linke webserver...
+
+const express = require('express');
+var app = express();
+
+app.get('public/index.html', (req, res) => { res.send('<h1>Hello world!</h1>'); }); //use html or json
+app.listen(3000, () => {
+   console.log('Server is up on port 3000');
+});
+
+Use handlebars to render templates using express...
+
+const hbs = require('hbs');
+
+app.set('view engine', 'hbs');
+app.use(express.static(__dirname + '/public'));
+
+app.get('/about', (req, res) => {
+    res.render('about.hbs', {
+         pageTitle:'About page',
+         currentYear:new Date().getFullYear()
+    });
+});
+
+
+
+
+
+
+
